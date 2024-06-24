@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace WelconeToBot
+﻿namespace WelconeToBot
 {
 
     public enum CartEffect
