@@ -9,9 +9,9 @@ namespace WelconeToBot
         private List<List<Cart>> _decks = [];
         private List<Quest> _quests = [];
 
-        public Tuple<CartView, CartView, CartView> CurrentCart { get; private set; }
+        public IEnumerable<CartView> CurrentCart { get; private set; }
 
-        public Tuple<Quest, Quest, Quest> CurrentQuest { get; private set; }
+        public IEnumerable<Quest> CurrentQuest { get; private set; }
 
         public CardsManager()
         {
@@ -20,27 +20,35 @@ namespace WelconeToBot
             //@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\QuestCarts.json"
             LoadCarts(@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\WelcomeTo.json");
             LoadQuests(@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\QuestCarts.json");
+            NewGame();
         }
 
-        public Tuple<CartView, CartView, CartView> NextTurn()
+        public IEnumerable<CartView> NextTurn()
         {
             if (_decks[0].Count < 2)
             {
                 ShufleDecks();
             }
             var turnCart = _decks.ConvertAll(x => x.Take(2))
-                                 .ConvertAll(x => new CartView(x.Last(), x.First()));
+                                                     .ConvertAll(x => new CartView(x.Last(), x.First()));
             foreach (var carts in _decks)
             {
                 carts.Remove(carts.FirstOrDefault());
             }
-            CurrentCart = Tuple.Create(turnCart[0], turnCart[1], turnCart[2]);
+            CurrentCart = turnCart;
 
             return CurrentCart;
         }
 
+        public void NewGame()
+        {
+            ShufleDecks();
+            ChoseQuests();
+        }
+
         public void ShufleDecks()
         {
+            _decks.Clear();
             Random random = new Random(DateTime.Now.Millisecond);
             _carts = _carts.OrderBy(_ => random.Next()).ToList();
             for (var i = 0; i < 3; i++)
@@ -55,7 +63,6 @@ namespace WelconeToBot
             using JsonReader r = new JsonTextReader(cr);
             var json = cr.ReadToEnd();
             _carts = JsonConvert.DeserializeObject<List<Cart>>(json);
-            ShufleDecks();
         }
 
 
@@ -65,7 +72,6 @@ namespace WelconeToBot
             using JsonReader r = new JsonTextReader(cr);
             var json = cr.ReadToEnd();
             _quests = JsonConvert.DeserializeObject<List<Quest>>(json);
-            ChoseQuests();
         }
 
         private void ChoseQuests()
@@ -76,7 +82,7 @@ namespace WelconeToBot
             {
                 quests.Add(_quests.Where(x => x.QuestType == i).OrderBy(_ => random.Next()).FirstOrDefault());
             }
-            CurrentQuest = Tuple.Create(quests[0], quests[1], quests[2]);
+            CurrentQuest = quests;
         }
     }
 }
