@@ -57,11 +57,12 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
     Console.WriteLine($"Received a '{messageText}' message in chat {chatId}.");
 
     ReplyKeyboardMarkup replyKeyboardMarkup = new(new[]
-{
-    new KeyboardButton[] { "New Game" },
-    new KeyboardButton[] { "NextTurn" },
-    new KeyboardButton[] { "Quests"}
-})
+    {
+        new KeyboardButton[] { "New Game" },
+        new KeyboardButton[] { "NextTurn" },
+        new KeyboardButton[] { "Quests"},
+        new KeyboardButton[] { "Shufle Deck"}
+    })
     {
         ResizeKeyboard = true
     };
@@ -101,6 +102,18 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
                 replyMarkup: replyKeyboardMarkup,
                 cancellationToken: cancellationToken);
             break;
+        case "Shufle Deck":
+            manager.ShufleDecks();
+            manager.NextTurn();
+            foreach (var item in manager.CurrentCart)
+                sb.AppendLine(item.ToString());
+            sentMessage = await botClient.SendTextMessageAsync(
+                chatId: chatId,
+                text: sb.ToString(),
+                replyMarkup: replyKeyboardMarkup,
+                cancellationToken: cancellationToken);
+            break;
+
         default:
             sentMessage = await botClient.SendTextMessageAsync(
                 chatId: chatId,
