@@ -106,5 +106,65 @@
     "Description": "4 района: 1,2,2,3 дома",
     "FirstCompletePointed": 11,
     "SecondCompletePointed": 6
+  },
+  {
+    "QuestType": 1,
+    "Description": "Построить все дома на верхней улице",
+    "FirstCompletePointed": 6,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 1,
+    "Description": "Построить крайние дома на всех улицах",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 1,
+    "Description": "Построить все дома на нижней улице",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 1,
+    "Description": "Использовать 5 строений",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 1,
+    "Description": "Использовать 7 рабочих",
+    "FirstCompletePointed": 6,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 2,
+    "Description": "Построить все бассейны и скверы на средней улице",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 2,
+    "Description": "Построить все бассейны и скверы на нижней улице",
+    "FirstCompletePointed": 10,
+    "SecondCompletePointed": 5
+  },
+  {
+    "QuestType": 2,
+    "Description": "Построить все скверы на двух улицах",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 2,
+    "Description": "Построить все бассейны на двух улицах",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 2,
+    "Description": "Построить все бассейны, скверы и один проезд на любой улице",
+    "FirstCompletePointed": 10,
+    "SecondCompletePointed": 5
   }
 ]
