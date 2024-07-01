@@ -50,8 +50,8 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
     }
     else
     {
-        manager = new CardsManager();
-        clientGame.Add(chatId, manager);
+        //manager = new CardsManager();
+        //clientGame.Add(chatId, manager);
     }
 
     Console.WriteLine($"Received a '{messageText}' message in chat {chatId}.");

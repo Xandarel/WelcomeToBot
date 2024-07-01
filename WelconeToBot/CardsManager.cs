@@ -1,25 +1,28 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 
 namespace WelconeToBot
 {
-    public class CardsManager
+    public class CardsManager : IGame<CartView>
     {
         private List<Cart> _carts = [];
         private List<List<Cart>> _decks = [];
         private List<Quest> _quests = [];
+        private IConfigurationRoot _configuration;
 
         public IEnumerable<CartView> CurrentCart { get; private set; }
 
         public IEnumerable<Quest> CurrentQuest { get; private set; }
 
-        public CardsManager()
+        public CardsManager(IConfigurationBuilder configuration)
         {
+            _configuration = configuration.Build();
             //TODO: Дописать получение строки из json конфига
             //@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\WelcomeTo.json"
             //@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\QuestCarts.json"
-            LoadCarts(@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\WelcomeTo.json");
-            LoadQuests(@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\QuestCarts.json");
+            LoadCarts(_configuration["CartsPath"]);
+            LoadQuests(_configuration["QuestsPath"]);
             NewGame();
         }
 
