@@ -166,5 +166,23 @@
     "Description": "Построить все бассейны, скверы и один проезд на любой улице",
     "FirstCompletePointed": 10,
     "SecondCompletePointed": 5
+  }, //Посхальные яйца
+  {
+    "QuestType": 3,
+    "Description": "Построить 3 района с 3 или более собранными пасхальными яйцами",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 3,
+    "Description": "Соберите все пасхальные яйца на нижней улице",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 3,
+    "Description": "3 района: 2,3,4 дома без пасхальных яиц",
+    "FirstCompletePointed": 10,
+    "SecondCompletePointed": 5
   }
 ]
