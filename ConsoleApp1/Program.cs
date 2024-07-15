@@ -43,7 +43,7 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
         return;
 
     var chatId = message.Chat.Id;
-    CardsManager manager;
+    CardsManager manager = null;
     if (clientGame.ContainsKey(chatId))
     {
         manager = clientGame[chatId];

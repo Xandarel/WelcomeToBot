@@ -9,20 +9,20 @@ namespace WelconeToBot
         private List<Cart> _carts = [];
         private List<List<Cart>> _decks = [];
         private List<Quest> _quests = [];
-        private IConfigurationRoot _configuration;
+        private IConfiguration _configuration;
 
         public IEnumerable<CartView> CurrentCart { get; private set; }
 
         public IEnumerable<Quest> CurrentQuest { get; private set; }
 
-        public CardsManager(IConfigurationBuilder configuration)
+        public CardsManager(IConfiguration configuration)
         {
-            _configuration = configuration.Build();
+            _configuration = configuration;
             //TODO: Дописать получение строки из json конфига
             //@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\WelcomeTo.json"
             //@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\QuestCarts.json"
-            LoadCarts(_configuration["CartsPath"]);
-            LoadQuests(_configuration["QuestsPath"]);
+            LoadCarts(_configuration.GetSection("CartsPath").Value);
+            LoadQuests(_configuration.GetSection("QuestsPath").Value);
             NewGame();
         }
 
