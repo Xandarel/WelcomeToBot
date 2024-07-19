@@ -1,15 +1,48 @@
-﻿using System.Text;
-using Telegram.Bot;
-using Telegram.Bot.Exceptions;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot.Polling;
+using Telegram.Bot;
+using TelegramBot;
 using Telegram.Bot.Types;
-using Telegram.Bot.Types.Enums;
-using Telegram.Bot.Types.ReplyMarkups;
 using WelconeToBot;
+using Telegram.Bot.Types.ReplyMarkups;
+using System.Text;
+using Telegram.Bot.Exceptions;
+using Telegram.Bot.Types.Enums;
+
+App.Run();
+IConfiguration configuration = new ConfigurationBuilder().SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
+            .AddJsonFile("appSettings.json")
+            .Build();
+
+#region
+//var service = new ServiceCollection()
+//        .AddSingleton<IBot, TelegtamBot>()
+//        .AddSingleton<IConfiguration>(configuration);
 
 
-var clientGame = new Dictionary<long, CardsManager>();
-var botClient = new TelegramBotClient("7314075768:AAGriKB8GNlW9xSfpbYb45IV-lbbbjmSMg4");
+//var bot = service.BuildServiceProvider().GetService<IBot>();
+//var client = bot.TelegramBotClient;
+
+//using CancellationTokenSource cancellationToken = new();
+
+//client.StartReceiving(
+//    updateHandler: bot.HandleUpdateAsync,
+//    pollingErrorHandler: bot.HandlePollingErrorAsync,
+//    receiverOptions: bot.ReceiverOptions,
+//    cancellationToken: cancellationToken.Token
+//);
+//cancellationToken.Cancel();
+
+//var me = await bot.GetMeAsync();
+//Console.WriteLine($"Start listening for @{me.Username}");
+//Console.ReadLine();
+#endregion
+
+
+
+var clientGame = new Dictionary<long, IGame<CartView>>();
+var botClient = new TelegramBotClient(configuration.GetSection("BotKey").Value);
 
 using CancellationTokenSource cts = new();
 
@@ -43,14 +76,14 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
         return;
 
     var chatId = message.Chat.Id;
-    CardsManager manager;
+    IGame<CartView> manager = null;
     if (clientGame.ContainsKey(chatId))
     {
         manager = clientGame[chatId];
     }
     else
     {
-        manager = new CardsManager();
+        manager = App.ServiceProvider.GetService<IGame<CartView>>();
         clientGame.Add(chatId, manager);
     }
 
