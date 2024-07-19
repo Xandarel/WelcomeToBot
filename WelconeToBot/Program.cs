@@ -3,10 +3,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WelconeToBot;
 
-IConfiguration configuration = new ConfigurationBuilder().SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName).AddJsonFile("appSettings.json").Build();
-IServiceCollection services = new ServiceCollection()
-    .AddSingleton<IGame<CartView>, CardsManager>()
-    .AddSingleton<IConfiguration>(configuration);
+App.Run();
 
-var testservice = services.BuildServiceProvider();
-var method = testservice.GetService<IGame<CartView>>();
+public static class App
+{
+    private static IServiceCollection _services;
+    public static IServiceProvider ServiceProvider { get => _services.BuildServiceProvider(); }
+    public static void Run()
+    {
+        IConfiguration configuration = new ConfigurationBuilder().SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
+            .AddJsonFile("appSettings.json")
+            .Build();
+        _services = new ServiceCollection()
+        .AddSingleton<IGame<CartView>, CardsManager>()
+        .AddSingleton<IConfiguration>(configuration);
+    }
+}

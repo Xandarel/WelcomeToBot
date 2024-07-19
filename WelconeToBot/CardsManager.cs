@@ -18,9 +18,6 @@ namespace WelconeToBot
         public CardsManager(IConfiguration configuration)
         {
             _configuration = configuration;
-            //TODO: Дописать получение строки из json конфига
-            //@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\WelcomeTo.json"
-            //@"C:\Users\Bordyug_ao\source\repos\WelconeToBot\WelconeToBot\QuestCarts.json"
             LoadCarts(_configuration.GetSection("CartsPath").Value);
             LoadQuests(_configuration.GetSection("QuestsPath").Value);
             NewGame();
