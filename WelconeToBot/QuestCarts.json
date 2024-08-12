@@ -166,23 +166,98 @@
     "Description": "Построить все бассейны, скверы и один проезд на любой улице",
     "FirstCompletePointed": 10,
     "SecondCompletePointed": 5
-  }, //Посхальные яйца
+  },
+  //Посхальные яйца
   {
-    "QuestType": 3,
+    "QuestType": 4,
+    "Description": "Соберите по 3 яйца разных цветов на каждой улице",
+    "FirstCompletePointed": 9,
+    "SecondCompletePointed": 5
+  },
+  {
+    "QuestType": 4,
+    "Description": "Соберите все оранжевые и розовые яйца",
+    "FirstCompletePointed": 9,
+    "SecondCompletePointed": 5
+  },
+  {
+    "QuestType": 4,
     "Description": "Построить 3 района с 3 или более собранными пасхальными яйцами",
     "FirstCompletePointed": 8,
     "SecondCompletePointed": 4
   },
   {
-    "QuestType": 3,
+    "QuestType": 4,
     "Description": "Соберите все пасхальные яйца на нижней улице",
     "FirstCompletePointed": 7,
     "SecondCompletePointed": 3
   },
   {
-    "QuestType": 3,
+    "QuestType": 4,
     "Description": "3 района: 2,3,4 дома без пасхальных яиц",
     "FirstCompletePointed": 10,
     "SecondCompletePointed": 5
+  },
+  //Фургон с мороженным
+  {
+    "QuestType": 5,
+    "Description": "3 района по одному дому с бассейном и Мороженным",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 5,
+    "Description": "2 ройона по 3 дома без мороженного",
+    "FirstCompletePointed": 10,
+    "SecondCompletePointed": 5
+  },
+  {
+    "QuestType": 5,
+    "Description": "3 ройона по 3 дома с 2 мороженками минимум",
+    "FirstCompletePointed": 9,
+    "SecondCompletePointed": 5
+  },
+  {
+    "QuestType": 5,
+    "Description": "Всё мороженное на одной улице",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 5,
+    "Description": "Обвести минимум 5 рожков с 3 шариками",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 3
+  },
+  //Хеллоуин
+  {
+    "QuestType": 6,
+    "Description": "Обвести все конфеты на нижней улице",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 6,
+    "Description": "Обвести все приведения на двух улицах",
+    "FirstCompletePointed": 9,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 6,
+    "Description": "Построить все дома с приведениями и конфетами",
+    "FirstCompletePointed": 10,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 6,
+    "Description": "Обвести как минимум 4 приведения и 4 конфеты",
+    "FirstCompletePointed": 9,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 6,
+    "Description": "Обвести как минимум 7 конфет",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 3
   }
 ]

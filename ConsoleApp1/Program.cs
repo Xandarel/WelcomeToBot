@@ -39,8 +39,6 @@ IConfiguration configuration = new ConfigurationBuilder().SetBasePath(Directory.
 //Console.ReadLine();
 #endregion
 
-
-
 var clientGame = new Dictionary<long, IGame<CartView>>();
 var botClient = new TelegramBotClient(configuration.GetSection("BotKey").Value);
 
