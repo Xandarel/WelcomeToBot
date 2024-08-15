@@ -2,10 +2,10 @@
 {
     public interface IGame<T>
     {
-        void NewGame();
-        IEnumerable<T> NextTurn();
-        IEnumerable<T> CurrentCart {  get; }
+        IEnumerable<T> CurrentCart { get; }
         IEnumerable<Quest> CurrentQuest { get; }
+        void NewGame(int gameMode = 0);
+        IEnumerable<T> NextTurn();
         void ShufleDecks();
     }
 }
