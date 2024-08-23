@@ -87,14 +87,23 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
 
     Console.WriteLine($"Received a '{messageText}' message in chat {chatId}.");
 
-    ReplyKeyboardMarkup replyKeyboardMarkup = new(new[]
-    {
+    ReplyKeyboardMarkup gameVersionKeyboardMarkup = new(new[]
+{
         new KeyboardButton[] { "Базовая Версия" },
         new KeyboardButton[] { "Пасхальные яйца" },
         new KeyboardButton[] { "Фургон с мороженным" },
         new KeyboardButton[] { "Хеллоуин" },
         new KeyboardButton[] { "Рождественские огоньки" },
         new KeyboardButton[] { "Судный день" },
+    })
+    {
+        ResizeKeyboard = true
+    };
+
+
+    ReplyKeyboardMarkup replyKeyboardMarkup = new(new[]
+    {
+        new KeyboardButton[] { "New Game" },
         new KeyboardButton[] { "NextTurn" },
         new KeyboardButton[] { "Quests"},
         new KeyboardButton[] { "Shufle Deck"}
@@ -106,6 +115,14 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
     Message sentMessage;
     switch (messageText)
     {
+        case "New Game":
+            sb.Append("Chose game mode");
+            sentMessage = await botClient.SendTextMessageAsync(
+                chatId: chatId,
+                text: sb.ToString(),
+                replyMarkup: gameVersionKeyboardMarkup,
+                cancellationToken: cancellationToken);
+            break;
         case "Базовая Версия":
             manager.NewGame();
             manager.NextTurn();
