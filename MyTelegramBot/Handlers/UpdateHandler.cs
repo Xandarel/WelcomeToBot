@@ -36,7 +36,6 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
         {
             UpdateType.Message => HandleMessageAsync(botClient, update.Message!, cancellationToken, manager),
             UpdateType.CallbackQuery => HandleCallbackAsync(botClient, update.CallbackQuery!, cancellationToken),
-            UpdateType.InlineQuery => HandleInlineQuery(botClient, update.InlineQuery!, cancellationToken),
             _ => Task.CompletedTask
         };
 
@@ -160,13 +159,5 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
             chatId: callback.Message!.Chat.Id,
             text: $"Вы нажали: {callback.Data}",
             cancellationToken: ct);
-    }
-
-    private Task HandleInlineQuery(
-        ITelegramBotClient bot,
-        InlineQuery inlineQuery,
-        CancellationToken ct)
-    {
-        // Обработка inline-запросов
     }
 }
