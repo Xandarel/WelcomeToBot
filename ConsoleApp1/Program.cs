@@ -39,8 +39,6 @@ IConfiguration configuration = new ConfigurationBuilder().SetBasePath(Directory.
 //Console.ReadLine();
 #endregion
 
-
-
 var clientGame = new Dictionary<long, IGame<CartView>>();
 var botClient = new TelegramBotClient(configuration.GetSection("BotKey").Value);
 
@@ -89,6 +87,20 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
 
     Console.WriteLine($"Received a '{messageText}' message in chat {chatId}.");
 
+    ReplyKeyboardMarkup gameVersionKeyboardMarkup = new(new[]
+{
+        new KeyboardButton[] { "Базовая Версия" },
+        new KeyboardButton[] { "Пасхальные яйца" },
+        new KeyboardButton[] { "Фургон с мороженным" },
+        new KeyboardButton[] { "Хеллоуин" },
+        new KeyboardButton[] { "Рождественские огоньки" },
+        new KeyboardButton[] { "Судный день" },
+    })
+    {
+        ResizeKeyboard = true
+    };
+
+
     ReplyKeyboardMarkup replyKeyboardMarkup = new(new[]
     {
         new KeyboardButton[] { "New Game" },
@@ -104,7 +116,80 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
     switch (messageText)
     {
         case "New Game":
+            sb.Append("Chose game mode");
+            sentMessage = await botClient.SendTextMessageAsync(
+                chatId: chatId,
+                text: sb.ToString(),
+                replyMarkup: gameVersionKeyboardMarkup,
+                cancellationToken: cancellationToken);
+            break;
+        case "Базовая Версия":
             manager.NewGame();
+            manager.NextTurn();
+            foreach (var item in manager.CurrentCart)
+                sb.AppendLine(item.ToString());
+            foreach (var item in manager.CurrentQuest)
+                sb.AppendLine(item.ToString());
+            sentMessage = await botClient.SendTextMessageAsync(
+                chatId: chatId,
+                text: sb.ToString(),
+                replyMarkup: replyKeyboardMarkup,
+                cancellationToken: cancellationToken);
+            break;
+        case "Пасхальные яйца":
+            manager.NewGame(4);
+            manager.NextTurn();
+            foreach (var item in manager.CurrentCart)
+                sb.AppendLine(item.ToString());
+            foreach (var item in manager.CurrentQuest)
+                sb.AppendLine(item.ToString());
+            sentMessage = await botClient.SendTextMessageAsync(
+                chatId: chatId,
+                text: sb.ToString(),
+                replyMarkup: replyKeyboardMarkup,
+                cancellationToken: cancellationToken);
+            break;
+        case "Фургон с мороженным":
+            manager.NewGame(5);
+            manager.NextTurn();
+            foreach (var item in manager.CurrentCart)
+                sb.AppendLine(item.ToString());
+            foreach (var item in manager.CurrentQuest)
+                sb.AppendLine(item.ToString());
+            sentMessage = await botClient.SendTextMessageAsync(
+                chatId: chatId,
+                text: sb.ToString(),
+                replyMarkup: replyKeyboardMarkup,
+                cancellationToken: cancellationToken);
+            break;
+        case "Хеллоуин":
+            manager.NewGame(6);
+            manager.NextTurn();
+            foreach (var item in manager.CurrentCart)
+                sb.AppendLine(item.ToString());
+            foreach (var item in manager.CurrentQuest)
+                sb.AppendLine(item.ToString());
+            sentMessage = await botClient.SendTextMessageAsync(
+                chatId: chatId,
+                text: sb.ToString(),
+                replyMarkup: replyKeyboardMarkup,
+                cancellationToken: cancellationToken);
+            break;
+        case "Рождественские огоньки":
+            manager.NewGame(7);
+            manager.NextTurn();
+            foreach (var item in manager.CurrentCart)
+                sb.AppendLine(item.ToString());
+            foreach (var item in manager.CurrentQuest)
+                sb.AppendLine(item.ToString());
+            sentMessage = await botClient.SendTextMessageAsync(
+                chatId: chatId,
+                text: sb.ToString(),
+                replyMarkup: replyKeyboardMarkup,
+                cancellationToken: cancellationToken);
+            break;
+        case "Судный день":
+            manager.NewGame(8);
             manager.NextTurn();
             foreach (var item in manager.CurrentCart)
                 sb.AppendLine(item.ToString());
