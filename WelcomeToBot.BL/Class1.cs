@@ -1,4 +1,4 @@
-﻿namespace WelcomeTo.DAL
+﻿namespace WelcomeToBot.BL
 {
     public class Class1
     {

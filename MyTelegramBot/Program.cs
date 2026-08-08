@@ -6,6 +6,7 @@ using MyTelegramBot.Handlers;
 using MyTelegramBot.Options;
 using MyTelegramBot.Services;
 using Telegram.Bot;
+using WelcomeToBot.BL.Options;
 using WelconeToBot;
 
 IHost host = Host.CreateDefaultBuilder(args)
@@ -13,10 +14,11 @@ IHost host = Host.CreateDefaultBuilder(args)
         {
             config.AddUserSecrets<Program>(); // подцепит UserSecretsId из сборки
         })
-    .ConfigureServices((context, services) =>
+    .ConfigureServices(services =>
     {
         services.AddHttpClient();
         services.AddOptions<TelegramSettingsOptions>().BindConfiguration(nameof(TelegramSettingsOptions));
+        services.AddOptions<CartPathOptions>().BindConfiguration(nameof(CartPathOptions));
 
         // Регистрируем TelegramBotClient как Singleton — один экземпляр на всё приложение
         services.AddSingleton<ITelegramBotClient>(sp =>

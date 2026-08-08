@@ -1,0 +1,188 @@
+[
+  {
+    "QuestType": 1,
+    "Description": "2 района по 4 дома",
+    "FirstCompletePointed": 6,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 1,
+    "Description": "3 района по 3 дома",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 1,
+    "Description": "6 райоов по 1 дому",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 1,
+    "Description": "4 района по 2 дома",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 1,
+    "Description": "2 района по 6 домов",
+    "FirstCompletePointed": 10,
+    "SecondCompletePointed": 6
+  },
+  {
+    "QuestType": 1,
+    "Description": "2 района по 5 домов",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 2,
+    "Description": "2 района: 4 и 5 домов",
+    "FirstCompletePointed": 9,
+    "SecondCompletePointed": 5
+  },
+  {
+    "QuestType": 2,
+    "Description": "3 района: 5, 2 и 2 дома",
+    "FirstCompletePointed": 10,
+    "SecondCompletePointed": 6
+  },
+  {
+    "QuestType": 2,
+    "Description": "4 района: 4,1,1,1 дом",
+    "FirstCompletePointed": 9,
+    "SecondCompletePointed": 5
+  },
+  {
+    "QuestType": 2,
+    "Description": "3 района: 4,3,3 дома",
+    "FirstCompletePointed": 12,
+    "SecondCompletePointed": 7
+  },
+  {
+    "QuestType": 2,
+    "Description": "2 района: 3 и 6 домов",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 2,
+    "Description": "4 района: 6,1,1,1 дом",
+    "FirstCompletePointed": 11,
+    "SecondCompletePointed": 6
+  },
+  {
+    "QuestType": 3,
+    "Description": "2 района: 2 и 5 домов",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 3,
+    "Description": "3 района:1,2,6 домов",
+    "FirstCompletePointed": 12,
+    "SecondCompletePointed": 7
+  },
+  {
+    "QuestType": 3,
+    "Description": "2 района: 4 и 3 дома",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 3,
+    "Description": "3 района: 4,5,1 домов",
+    "FirstCompletePointed": 13,
+    "SecondCompletePointed": 7
+  },
+  {
+    "QuestType": 3,
+    "Description": "3 района: 2,3,5 дома",
+    "FirstCompletePointed": 13,
+    "SecondCompletePointed": 7
+  },
+  {
+    "QuestType": 3,
+    "Description": "4 района: 1,2,2,3 дома",
+    "FirstCompletePointed": 11,
+    "SecondCompletePointed": 6
+  },
+  {
+    "QuestType": 1,
+    "Description": "Построить все дома на верхней улице",
+    "FirstCompletePointed": 6,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 1,
+    "Description": "Построить крайние дома на всех улицах",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 1,
+    "Description": "Построить все дома на нижней улице",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 1,
+    "Description": "Использовать 5 строений",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 1,
+    "Description": "Использовать 7 рабочих",
+    "FirstCompletePointed": 6,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 2,
+    "Description": "Построить все бассейны и скверы на средней улице",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 2,
+    "Description": "Построить все бассейны и скверы на нижней улице",
+    "FirstCompletePointed": 10,
+    "SecondCompletePointed": 5
+  },
+  {
+    "QuestType": 2,
+    "Description": "Построить все скверы на двух улицах",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 2,
+    "Description": "Построить все бассейны на двух улицах",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 2,
+    "Description": "Построить все бассейны, скверы и один проезд на любой улице",
+    "FirstCompletePointed": 10,
+    "SecondCompletePointed": 5
+  }, //Посхальные яйца
+  {
+    "QuestType": 3,
+    "Description": "Построить 3 района с 3 или более собранными пасхальными яйцами",
+    "FirstCompletePointed": 8,
+    "SecondCompletePointed": 4
+  },
+  {
+    "QuestType": 3,
+    "Description": "Соберите все пасхальные яйца на нижней улице",
+    "FirstCompletePointed": 7,
+    "SecondCompletePointed": 3
+  },
+  {
+    "QuestType": 3,
+    "Description": "3 района: 2,3,4 дома без пасхальных яиц",
+    "FirstCompletePointed": 10,
+    "SecondCompletePointed": 5
+  }
+]
