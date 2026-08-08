@@ -1,4 +1,6 @@
-﻿namespace WelconeToBot
+﻿using WelcomeToBot.BL.Enums;
+
+namespace WelconeToBot
 {
     public sealed class Cart
     {

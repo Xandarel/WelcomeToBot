@@ -43,10 +43,10 @@ namespace WelconeToBot
             return CurrentCart;
         }
 
-        public void NewGame()
+        public void NewGame(int gameMode = 0)
         {
             ShufleDecks();
-            ChoseQuests();
+            ChoseQuests(gameMode);
         }
 
         public void ShufleDecks()
@@ -77,13 +77,20 @@ namespace WelconeToBot
             _quests = JsonConvert.DeserializeObject<List<Quest>>(json);
         }
 
-        private void ChoseQuests()
+        private void ChoseQuests(int gameMode = 0)
         {
-            Random random = new(DateTime.Now.Millisecond);
+            Random random = new Random(DateTime.Now.Millisecond);
             var quests = new List<Quest>();
             for (var i = 1; i <= 3; i++)
             {
-                quests.Add(_quests.Where(x => x.QuestType == i).OrderBy(_ => random.Next()).FirstOrDefault());
+                if (i == 3 && gameMode > 0)
+                {
+                    quests.Add(_quests.Where(x => x.QuestType == i || x.QuestType == gameMode).OrderBy(_ => random.Next()).FirstOrDefault());
+                }
+                else
+                {
+                    quests.Add(_quests.Where(x => x.QuestType == i).OrderBy(_ => random.Next()).FirstOrDefault());
+                }
             }
             CurrentQuest = quests;
         }

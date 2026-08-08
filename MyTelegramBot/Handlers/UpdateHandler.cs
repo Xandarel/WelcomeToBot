@@ -1,10 +1,13 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Text;
+using System.Threading;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
+using WelcomeToBot.BL.Enums;
+using WelcomeToBot.BL.Extension;
 using WelconeToBot;
 
 namespace MyTelegramBot.Handlers;
@@ -12,6 +15,30 @@ namespace MyTelegramBot.Handlers;
 public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) : IUpdateHandler
 {
     private Dictionary<long, IGame<CartView>> _clientGame = new();
+    private readonly ReplyKeyboardMarkup _gameVersionKeyboardMarkup = new(
+        [
+            ["Базовая Версия"],
+            ["Пасхальные яйца"],
+            ["Фургон с мороженным"],
+            ["Хеллоуин"],
+            ["Рождественские огоньки"],
+            ["Судный день"]
+        ])
+        {
+            ResizeKeyboard = true
+        };
+
+    private readonly ReplyKeyboardMarkup _replyKeyboardMarkup = new(
+        [
+            [Buttons.NewGame.GetDescription()],
+            [Buttons.NextTurn.GetDescription()],
+            [Buttons.Quests.GetDescription()],
+            [Buttons.Shuffle.GetDescription()]
+        ])
+    {
+        ResizeKeyboard = true
+    };
+
 
     public async Task HandleUpdateAsync(
         ITelegramBotClient botClient,
@@ -48,20 +75,6 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
         await Task.CompletedTask;
     }
 
-    private ReplyKeyboardMarkup CreateKeyboard()
-    {
-        return new(
-        [
-            ["New Game"],
-            ["Next Turn"],
-            ["Quests"],
-            ["Shuffle Deck"]
-        ])
-        {
-            ResizeKeyboard = true
-        };
-    }
-
     // ── Обработчики конкретных типов ──
     private async Task HandleMessageAsync(
             ITelegramBotClient botClient,
@@ -79,14 +92,36 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
             "New Game" => HandleNewGameCommand(botClient, message, game, ct),
             "Next Turn" => HandleNextTurnCommand(botClient, message, game, ct),
             "Quests" => HandleQuestCommand(botClient, message, game, ct),
-            "Shuffle Deck" => HandkeShuffleCommand(botClient, message, game, ct),
+            "Shuffle Deck" => HandleShuffleCommand(botClient, message, game, ct),
+            "Базовая Версия" => HandleStartGame(botClient, message, game, 0, ct),
+            "Пасхальные яйца" => HandleStartGame(botClient, message,game, 4, ct),
+            "Фургон с мороженным" => HandleStartGame(botClient, message, game, 5, ct),
+            "Хеллоуин" => HandleStartGame(botClient, message, game, 6, ct),
+            "Рождественские огоньки" => HandleStartGame(botClient, message, game, 7, ct),
+            "Судный день" => HandleStartGame(botClient, message, game, 8, ct),
             _ => EchoAsync(botClient, message, ct)
         };
 
         await action;
     }
 
-    private async Task HandkeShuffleCommand(ITelegramBotClient botClient, Message message, IGame<CartView> game, CancellationToken cancellationToken)
+    private async Task HandleStartGame(ITelegramBotClient botClient, Message message, IGame<CartView> game, int gameMode, CancellationToken cancellationToken)
+    {
+        game.NewGame(gameMode);
+        game.NextTurn();
+        StringBuilder sb = new();
+        foreach (var item in game.CurrentCart)
+            sb.AppendLine(item.ToString());
+        foreach (var item in game.CurrentQuest)
+            sb.AppendLine(item.ToString());
+        await botClient.SendMessage(
+            chatId: message.Chat.Id,
+            text: sb.ToString(),
+            replyMarkup: _replyKeyboardMarkup,
+            cancellationToken: cancellationToken);
+    }
+
+    private async Task HandleShuffleCommand(ITelegramBotClient botClient, Message message, IGame<CartView> game, CancellationToken cancellationToken)
     {
         game.ShufleDecks();
         game.NextTurn();
@@ -96,7 +131,7 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
         await botClient.SendMessage(
             chatId: message.Chat.Id,
             text: sb.ToString(),
-            replyMarkup: CreateKeyboard(),
+            replyMarkup: _replyKeyboardMarkup,
             cancellationToken: cancellationToken);
     }
 
@@ -108,7 +143,7 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
         await botClient.SendMessage(
             chatId: message.Chat.Id,
             text: sb.ToString(),
-            replyMarkup: CreateKeyboard(),
+            replyMarkup: _replyKeyboardMarkup,
             cancellationToken: cancellationToken);
     }
 
@@ -117,14 +152,11 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
         game.NewGame();
         game.NextTurn();
         StringBuilder sb = new();
-        foreach (CartView item in game.CurrentCart)
-            sb.AppendLine(item.ToString());
-        foreach (Quest item in game.CurrentQuest)
-            sb.AppendLine(item.ToString());
+        sb.Append("Выберите версию игры");
         await bot.SendMessage(
             chatId: message.Chat.Id,
             text: sb.ToString(),
-            replyMarkup: CreateKeyboard(),
+            replyMarkup: _gameVersionKeyboardMarkup,
             cancellationToken: cancellationToken);
     }
 
@@ -137,7 +169,7 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
         await bot.SendMessage(
             chatId: message.Chat.Id,
             text: sb.ToString(),
-            replyMarkup: CreateKeyboard(),
+            replyMarkup: _replyKeyboardMarkup,
             cancellationToken: cancellationToken);
     }
 
