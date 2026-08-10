@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Text;
-using System.Threading;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
@@ -14,20 +13,18 @@ namespace MyTelegramBot.Handlers;
 
 public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) : IUpdateHandler
 {
-    private Dictionary<long, IGame<CartView>> _clientGame = new();
     private readonly ReplyKeyboardMarkup _gameVersionKeyboardMarkup = new(
         [
-            ["Базовая Версия"],
-            ["Пасхальные яйца"],
-            ["Фургон с мороженным"],
-            ["Хеллоуин"],
-            ["Рождественские огоньки"],
-            ["Судный день"]
+            [Buttons.BaseGame.GetDescription()],
+            [Buttons.EasterEggsGame.GetDescription()],
+            [Buttons.IceCreamTruckGame.GetDescription()],
+            [Buttons.HalloweenGame.GetDescription()],
+            [Buttons.ChristmasLightsGame.GetDescription()],
+            [Buttons.JudgementDayGame.GetDescription()]
         ])
-        {
-            ResizeKeyboard = true
-        };
-
+    {
+        ResizeKeyboard = true
+    };
     private readonly ReplyKeyboardMarkup _replyKeyboardMarkup = new(
         [
             [Buttons.NewGame.GetDescription()],
@@ -38,8 +35,7 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
     {
         ResizeKeyboard = true
     };
-
-
+    private Dictionary<long, IGame<CartView>> _clientGame = new();
     public async Task HandleUpdateAsync(
         ITelegramBotClient botClient,
         Update update,
@@ -86,23 +82,26 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
         if (message.Text is not { } text)
             return;
 
-        // Простая обработка команд
-        Task action = text.Trim(' ') switch
+        Buttons? button = EnumExtensions.ParseByDescription<Buttons>(text);
+        if (button is not null)
         {
-            "New Game" => HandleNewGameCommand(botClient, message, game, ct),
-            "Next Turn" => HandleNextTurnCommand(botClient, message, game, ct),
-            "Quests" => HandleQuestCommand(botClient, message, game, ct),
-            "Shuffle Deck" => HandleShuffleCommand(botClient, message, game, ct),
-            "Базовая Версия" => HandleStartGame(botClient, message, game, 0, ct),
-            "Пасхальные яйца" => HandleStartGame(botClient, message,game, 4, ct),
-            "Фургон с мороженным" => HandleStartGame(botClient, message, game, 5, ct),
-            "Хеллоуин" => HandleStartGame(botClient, message, game, 6, ct),
-            "Рождественские огоньки" => HandleStartGame(botClient, message, game, 7, ct),
-            "Судный день" => HandleStartGame(botClient, message, game, 8, ct),
-            _ => EchoAsync(botClient, message, ct)
-        };
-
-        await action;
+            await (button.Value switch
+            {
+                Buttons.NewGame => HandleNewGameCommand(botClient, message, game, ct),
+                Buttons.NextTurn => HandleNextTurnCommand(botClient, message, game, ct),
+                Buttons.Quests => HandleQuestCommand(botClient, message, game, ct),
+                Buttons.Shuffle => HandleShuffleCommand(botClient, message, game, ct),
+                Buttons.BaseGame or
+                Buttons.EasterEggsGame or
+                Buttons.IceCreamTruckGame or
+                Buttons.HalloweenGame or
+                Buttons.ChristmasLightsGame or
+                Buttons.JudgementDayGame
+                    => HandleStartGame(botClient, message, game, (int)button.Value, ct),
+                _ => RepeatComand(botClient, message, ct),
+            });
+            return;
+        }
     }
 
     private async Task HandleStartGame(ITelegramBotClient botClient, Message message, IGame<CartView> game, int gameMode, CancellationToken cancellationToken)
@@ -110,9 +109,9 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
         game.NewGame(gameMode);
         game.NextTurn();
         StringBuilder sb = new();
-        foreach (var item in game.CurrentCart)
+        foreach (CartView item in game.CurrentCart)
             sb.AppendLine(item.ToString());
-        foreach (var item in game.CurrentQuest)
+        foreach (Quest item in game.CurrentQuest)
             sb.AppendLine(item.ToString());
         await botClient.SendMessage(
             chatId: message.Chat.Id,
@@ -173,11 +172,12 @@ public class UpdateHandler(ILogger<UpdateHandler> logger, IGame<CartView> deck) 
             cancellationToken: cancellationToken);
     }
 
-    private async Task EchoAsync(ITelegramBotClient bot, Message msg, CancellationToken ct)
+    private async Task RepeatComand(ITelegramBotClient bot, Message msg, CancellationToken ct)
     {
         await bot.SendMessage(
             chatId: msg.Chat.Id,
-            text: $"Вы сказали: {msg.Text}",
+            text: $"Неизвестная команда. Пожуйста, повторите запрос",
+            replyMarkup: _replyKeyboardMarkup,
             cancellationToken: ct);
     }
 
