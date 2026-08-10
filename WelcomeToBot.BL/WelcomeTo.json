@@ -1,0 +1,473 @@
+[
+  {
+
+    "Number": 12,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 9,
+    "Type": "Post"
+
+  },
+  {
+
+    "Number": 3,
+    "Type": "Worker"
+
+  },
+  {
+
+    "Number": 12,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 5,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 2,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 8,
+    "Type": "Pool"
+
+  },
+  {
+
+    "Number": 7,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 13,
+    "Type": "Worker"
+
+  },
+  {
+
+    "Number": 10,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 11,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 6,
+    "Type": "Pool"
+
+  },
+  {
+
+    "Number": 8,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 9,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 5,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 6,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 8,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 3,
+    "Type": "Pool"
+
+  },
+  {
+
+    "Number": 10,
+    "Type": "Worker"
+
+  },
+  {
+
+    "Number": 9,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 7,
+    "Type": "Pool"
+
+  },
+  {
+
+    "Number": 1,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 9,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 15,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 10,
+    "Type": "Pool"
+
+  },
+  {
+
+    "Number": 3,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 7,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 7,
+    "Type": "Post"
+
+  },
+  {
+
+    "Number": 4,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 7,
+    "Type": "Worker"
+
+  },
+  {
+
+    "Number": 6,
+    "Type": "Post"
+
+  },
+  {
+
+    "Number": 9,
+    "Type": "Worker"
+
+  },
+  {
+
+    "Number": 14,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 5,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 8,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 2,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 9,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 11,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 13,
+    "Type": "Pool"
+
+  },
+  {
+
+    "Number": 10,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 14,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 7,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 6,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 4,
+    "Type": "Worker"
+
+  },
+  {
+
+    "Number": 9,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 1,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 5,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 12,
+    "Type": "Post"
+
+  },
+  {
+
+    "Number": 4,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 10,
+    "Type": "Post"
+
+  },
+  {
+
+    "Number": 3,
+    "Type": "Post"
+
+  },
+  {
+
+    "Number": 14,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 6,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 8,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 15,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 12,
+    "Type": "Pool"
+
+  },
+  {
+
+    "Number": 8,
+    "Type": "Worker"
+
+  },
+  {
+
+    "Number": 15,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 7,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 5,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 7,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 6,
+    "Type": "Worker"
+
+  },
+  {
+
+    "Number": 11,
+    "Type": "Forest"
+
+  },
+  {
+
+    "Number": 4,
+    "Type": "Post"
+
+  },
+  {
+
+    "Number": 8,
+    "Type": "Post"
+
+  },
+  {
+
+    "Number": 13,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 4,
+    "Type": "Pool"
+
+  },
+  {
+
+    "Number": 9,
+    "Type": "Pool"
+
+  },
+  {
+
+    "Number": 11,
+    "Type": "Cost"
+
+  },
+  {
+
+    "Number": 13,
+    "Type": "Post"
+
+  },
+  {
+
+    "Number": 6,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 11,
+    "Type": "Fence"
+
+  },
+  {
+
+    "Number": 12,
+    "Type": "Worker"
+
+  },
+  {
+
+    "Number": 11,
+    "Type": "Forest"
+  },
+  {
+    "Number": 10,
+    "Type": "Cost"
+  },
+  {
+    "Number": 8,
+    "Type": "Fence"
+  },
+  {
+    "Number": 2,
+    "Type": "Cost"
+  },
+  {
+    "Number": 5,
+    "Type": "Cost"
+  },
+  {
+    "Number": 1,
+    "Type": "Fence"
+  },
+  {
+    "Number": 8,
+    "Type": "Forest"
+  },
+  {
+    "Number": 10,
+    "Type": "Fence"
+  }
+]
