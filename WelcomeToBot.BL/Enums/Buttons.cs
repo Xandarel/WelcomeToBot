@@ -12,6 +12,24 @@ namespace WelcomeToBot.BL.Enums
         [Description("Quests")]
         Quests,
         [Description("Shuffle Deck")]
-        Shuffle
+        Shuffle,
+
+        [Description("Базовая Версия")]
+        BaseGame = 0,
+
+        [Description("Пасхальные яйца")]
+        EasterEggsGame = 4,
+
+        [Description("Фургон с мороженным")]
+        IceCreamTruckGame = 5,
+
+        [Description("Хеллоуин")]
+        HalloweenGame = 6,
+
+        [Description("Рождественские огоньки")]
+        ChristmasLightsGame = 7,
+
+        [Description("Судный день")]
+        JudgementDayGame = 8,
     }
 }
