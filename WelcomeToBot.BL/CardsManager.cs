@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using WelcomeTo.DAL.Entities;
 using WelcomeToBot.BL.Options;
 
 namespace WelconeToBot

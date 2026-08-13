@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace WelcomeToBot.BL.Extension
+namespace WelcomeTo.DAL.Extension
 {
     public static class EnumExtensions
     {

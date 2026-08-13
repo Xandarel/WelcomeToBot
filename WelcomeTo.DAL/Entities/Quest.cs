@@ -1,8 +1,9 @@
-﻿namespace WelconeToBot
+﻿namespace WelcomeTo.DAL.Entities
 {
     public sealed class Quest
     {
-        public string Description { get; set; }
+        public long Id { get; set; }
+        public required string Description { get; set; }
 
         public int FirstCompletePointed { get; set; }
         public int SecondCompletePointed { get; set; }

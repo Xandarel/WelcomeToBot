@@ -1,4 +1,6 @@
-﻿namespace WelconeToBot
+﻿using WelcomeTo.DAL.Entities;
+
+namespace WelconeToBot
 {
     public interface IGame<T>
     {

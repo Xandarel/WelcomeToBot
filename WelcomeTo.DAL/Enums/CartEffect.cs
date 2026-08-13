@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WelcomeToBot.BL.Enums
+namespace WelcomeTo.DAL.Enums
 {
     public enum CartEffect
     {

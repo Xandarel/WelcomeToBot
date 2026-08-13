@@ -1,5 +1,6 @@
-﻿using WelcomeToBot.BL.Enums;
-using WelcomeToBot.BL.Extension;
+﻿using WelcomeTo.DAL.Entities;
+using WelcomeTo.DAL.Enums;
+using WelcomeTo.DAL.Extension;
 
 namespace WelconeToBot
 {

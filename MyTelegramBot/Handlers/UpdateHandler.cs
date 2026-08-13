@@ -5,8 +5,9 @@ using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
+using WelcomeTo.DAL.Entities;
+using WelcomeTo.DAL.Extension;
 using WelcomeToBot.BL.Enums;
-using WelcomeToBot.BL.Extension;
 using WelconeToBot;
 
 namespace MyTelegramBot.Handlers;
