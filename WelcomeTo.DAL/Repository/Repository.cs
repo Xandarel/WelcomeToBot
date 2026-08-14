@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WelcomeTo.DAL.Repository
+﻿namespace WelcomeTo.DAL.Repository
 {
-    internal class Repository
+    public sealed class Repository
     {
+
     }
 }
